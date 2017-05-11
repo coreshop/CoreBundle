@@ -1,0 +1,11 @@
+core_shop_order:
+  pimcore:
+    order:
+      classes:
+        admin_controller: CoreShop\Bundle\CoreBundle\Controller\OrderController
+    order_invoice:
+      classes:
+        admin_controller: CoreShop\Bundle\CoreBundle\Controller\OrderInvoiceController
+    order_shipment:
+      classes:
+        admin_controller: CoreShop\Bundle\CoreBundle\Controller\OrderShipmentController

@@ -1,0 +1,59 @@
+services:
+  coreshop.checkout_manager.default:
+    class: CoreShop\Bundle\CoreBundle\Checkout\CheckoutManager
+
+  coreshop.checkout_manager:
+    alias: coreshop.checkout_manager.default
+
+  #default steps
+  coreshop.checkout.step.cart:
+    class: CoreShop\Bundle\CoreBundle\Checkout\Step\CartCheckoutStep
+    tags:
+      - {name: coreshop.registry.checkout.step, type: cart, priority: 10, manager: coreshop.checkout_manager.default}
+
+  coreshop.checkout.step.customer:
+    class: CoreShop\Bundle\CoreBundle\Checkout\Step\CustomerCheckoutStep
+    arguments: ['@coreshop.context.customer', '@form.factory']
+    tags:
+      - {name: coreshop.registry.checkout.step, type: customer, priority: 20, manager: coreshop.checkout_manager.default}
+
+  coreshop.checkout.step.address:
+    class: CoreShop\Bundle\CoreBundle\Checkout\Step\AddressCheckoutStep
+    arguments: ['@form.factory', '@security.token_storage']
+    tags:
+      - {name: coreshop.registry.checkout.step, type: address, priority: 30, manager: coreshop.checkout_manager.default}
+
+  coreshop.checkout.step.shipping:
+    class: CoreShop\Bundle\CoreBundle\Checkout\Step\ShippingCheckoutStep
+    arguments:
+      - '@coreshop.carrier.cart.processor'
+      - '@coreshop.carrier.price_calculator.default'
+      - '@coreshop.carrier.cart.checker'
+      - '@form.factory'
+      - '@coreshop.context.currency'
+      - '@coreshop.money_formatter'
+    tags:
+      - {name: coreshop.registry.checkout.step, type: shipping, priority: 40, manager: coreshop.checkout_manager.default}
+
+  coreshop.checkout.step.payment:
+    class: CoreShop\Bundle\CoreBundle\Checkout\Step\PaymentCheckoutStep
+    arguments: ['@form.factory']
+    tags:
+      - {name: coreshop.registry.checkout.step, type: payment, priority: 50, manager: coreshop.checkout_manager.default}
+
+  coreshop.checkout.step.summary:
+    class: CoreShop\Bundle\CoreBundle\Checkout\Step\SummaryCheckoutStep
+    tags:
+      - {name: coreshop.registry.checkout.step, type: summary, priority: 60, manager: coreshop.checkout_manager.default}
+
+
+  # Forms
+  coreshop.form.type.checkout_address:
+    class: CoreShop\Bundle\CoreBundle\Form\Type\Checkout\AddressType
+    tags:
+      - {name: form.type}
+
+  coreshop.form.type.checkout_payment:
+    class: CoreShop\Bundle\CoreBundle\Form\Type\Checkout\PaymentType
+    tags:
+      - {name: form.type}
