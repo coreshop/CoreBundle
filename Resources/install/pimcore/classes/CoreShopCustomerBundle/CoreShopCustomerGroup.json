@@ -1,6 +1,6 @@
 {
     "description": null,
-    "parentClass": "CoreShop\\Component\\Customer\\Model\\CustomerGroup",
+    "parentClass": "CoreShop\\Component\\Core\\Model\\CustomerGroup",
     "useTraits": null,
     "allowInherit": false,
     "allowVariants": false,

@@ -38,16 +38,7 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $outputStyle = new SymfonyStyle($input, $output);
-        $outputStyle->writeln(sprintf(
-            'Creating CoreShop Pimcore classes <info>%s</info>.',
-            $this->getEnvironment()
-        ));
-
-        $this
-            ->get('coreshop.installer.executor.class_installer')
-            ->installClasses($output)
-        ;
+        $this->runCommands(['coreshop:resources:install'], $output, false, true);
 
         return 0;
     }
