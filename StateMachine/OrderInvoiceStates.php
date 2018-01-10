@@ -12,11 +12,9 @@
 
 namespace CoreShop\Bundle\CoreBundle\StateMachine;
 
-final class OrderTransitions
+final class OrderInvoiceStates
 {
-    const IDENTIFIER = 'coreshop_order';
-
-    const TRANSITION_CREATE = 'create';
-    const TRANSITION_CANCEL = 'cancel';
-    const TRANSITION_COMPLETE = 'complete';
+    const STATE_NEW = 'new';
+    const STATE_CANCELLED = 'cancelled';
+    const STATE_INVOICED = 'invoiced';
 }
