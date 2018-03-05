@@ -8,19 +8,11 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
-namespace CoreShop\Bundle\CoreBundle\Templating\Helper;
+namespace CoreShop\Bundle\CoreBundle;
 
-use CoreShop\Component\Order\Model\PurchasableInterface;
-use Symfony\Component\Templating\Helper\HelperInterface;
-
-interface ProductDiscountHelperInterface extends HelperInterface
+final class CoreEvents
 {
-    /**
-     * @param PurchasableInterface $product
-     * @param bool $withTax
-     * @return int
-     */
-    public function getDiscount(PurchasableInterface $product, $withTax = true);
+    const SUPPORTS_PAYMENT_PROVIDER = 'coreshop.payment_provider.supports';
 }
