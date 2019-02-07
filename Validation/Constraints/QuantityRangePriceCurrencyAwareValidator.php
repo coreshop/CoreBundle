@@ -13,24 +13,24 @@
 namespace CoreShop\Bundle\CoreBundle\Validation\Constraints;
 
 use CoreShop\Component\Core\Model\CurrencyInterface;
-use CoreShop\Component\Core\Model\ProductTierPriceRangeInterface;
+use CoreShop\Component\Core\Model\QuantityRangeInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
-class TierPriceRangeCurrencyAwareValidator extends ConstraintValidator
+class QuantityRangePriceCurrencyAwareValidator extends ConstraintValidator
 {
     /**
      * {@inheritdoc}
      */
     public function validate($value, Constraint $constraint)
     {
-        if (!$constraint instanceof TierPriceRangeCurrencyAware) {
-            throw new UnexpectedTypeException($constraint, TierPriceRangeCurrencyAware::class);
+        if (!$constraint instanceof QuantityRangePriceCurrencyAware) {
+            throw new UnexpectedTypeException($constraint, QuantityRangePriceCurrencyAware::class);
         }
 
-        if (!$value instanceof ProductTierPriceRangeInterface) {
-            throw new UnexpectedTypeException($value, ProductTierPriceRangeInterface::class);
+        if (!$value instanceof QuantityRangeInterface) {
+            throw new UnexpectedTypeException($value, QuantityRangeInterface::class);
         }
 
         if (!$value->getCurrency() instanceof CurrencyInterface) {

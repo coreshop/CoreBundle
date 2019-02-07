@@ -10,8 +10,8 @@
  *
  */
 
-pimcore.registerNS('coreshop.tier_pricing.specific_tier_price.ranges');
-coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
+pimcore.registerNS('coreshop.product_quantity_price_rules.ranges');
+coreshop.product_quantity_price_rules.ranges = Class.create({
 
     internalTmpId: null,
     ruleId: null,
@@ -28,15 +28,15 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
 
     postSaveObject: function (object, refreshedData) {
         if (this.isDirty()) {
-            this.remapTierPriceIds(refreshedData);
+            this.remapProductQuantityPriceRuleIds(refreshedData);
         } else {
             this.commitStoreChanges();
         }
     },
 
-    remapTierPriceIds: function (refreshedData) {
+    remapProductQuantityPriceRuleIds: function (refreshedData) {
 
-        var grid = this.rangesContainer.query('[name=tier-price-grid]')[0];
+        var grid = this.rangesContainer.query('[name=price-rule-ranges-grid]')[0];
 
         if (this.ruleId === null || refreshedData === null) {
             this.commitStoreChanges();
@@ -53,15 +53,15 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
     },
 
     commitStoreChanges: function () {
-        var grid = this.rangesContainer.query('[name=tier-price-grid]')[0];
+        var grid = this.rangesContainer.query('[name=price-rule-ranges-grid]')[0];
         grid.getStore().commitChanges();
     },
 
     getLayout: function () {
 
         this.rangesContainer = new Ext.Panel({
-            iconCls: 'coreshop_icon_tier_price',
-            title: t('coreshop_tier_price_ranges'),
+            iconCls: 'coreshop_icon_product_quantity_price_rules',
+            title: t('coreshop_product_quantity_price_rules_ranges'),
             autoScroll: true,
             forceLayout: true,
             style: 'padding: 10px',
@@ -85,7 +85,7 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
 
     getRangesData: function () {
         // get defined ranges
-        var grid = this.rangesContainer.query('[name=tier-price-grid]')[0],
+        var grid = this.rangesContainer.query('[name=price-rule-ranges-grid]')[0],
             ranges = [];
 
 
@@ -115,7 +115,7 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
     },
 
     resetDeepId: function () {
-        var grid = this.rangesContainer.query('[name=tier-price-grid]')[0];
+        var grid = this.rangesContainer.query('[name=price-rule-ranges-grid]')[0];
         grid.getStore().each(function (record) {
             record.set('rangeId', null);
         });
@@ -123,7 +123,7 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
 
     isDirty: function () {
 
-        var grid = this.rangesContainer.query('[name=tier-price-grid]')[0],
+        var grid = this.rangesContainer.query('[name=price-rule-ranges-grid]')[0],
             store = grid.getStore();
 
         if (store.getModifiedRecords().length > 0 || store.getNewRecords().length > 0 || store.getRemovedRecords().length > 0) {
@@ -174,12 +174,12 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
                 hidden: true
             },
             {
-                text: t('coreshop_tier_range_from'),
+                text: t('coreshop_product_quantity_price_rules_range_from'),
                 flex: 1,
                 sortable: false,
                 readOnly: true,
                 dataIndex: 'rangeFrom',
-                name: 'tier_range_from',
+                name: 'quantity_range_from',
                 getEditor: function () {
                     return new Ext.form.NumberField({
                         minValue: 0
@@ -187,17 +187,17 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
                 },
                 renderer: function (value) {
                     if (value === undefined || value === null) {
-                        return '0' + ' ' + t('coreshop_tier_quantity_amount');
+                        return '0' + ' ' + t('coreshop_product_quantity_price_rules_quantity_amount');
                     }
-                    return value + ' ' + t('coreshop_tier_quantity_amount');
+                    return value + ' ' + t('coreshop_product_quantity_price_rules_quantity_amount');
                 }
             },
             {
-                text: t('coreshop_tier_range_to'),
+                text: t('coreshop_product_quantity_price_rules_range_to'),
                 flex: 1,
                 sortable: false,
                 dataIndex: 'rangeTo',
-                name: 'tier_range_to',
+                name: 'quantity_range_to',
                 getEditor: function () {
                     return new Ext.form.NumberField({
                         minValue: 1
@@ -206,13 +206,13 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
                 renderer: function (value, cell, record, rowIndex) {
                     var lastElement = record.store.getRange().length === (rowIndex + 1);
                     if (value === undefined || value === null) {
-                        return '0' + ' ' + t('coreshop_tier_quantity_amount');
+                        return '0' + ' ' + t('coreshop_product_quantity_price_rules_quantity_amount');
                     }
-                    return value + ' ' + t('coreshop_tier_quantity_amount') + (lastElement === true ? '+' : '');
+                    return value + ' ' + t('coreshop_product_quantity_price_rules_quantity_amount') + (lastElement === true ? '+' : '');
                 }
             },
             {
-                text: t('coreshop_tier_pricing_behaviour'),
+                text: t('coreshop_product_quantity_price_rules_behaviour'),
                 flex: 1,
                 sortable: false,
                 dataIndex: 'pricingBehaviour',
@@ -220,11 +220,11 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
                 getEditor: function () {
                     return new Ext.form.ComboBox({
                         store: [
-                            ['fixed', t('coreshop_tier_behaviour_fixed')],
-                            ['amount_decrease', t('coreshop_tier_behaviour_amount_decrease')],
-                            ['amount_increase', t('coreshop_tier_behaviour_amount_increase')],
-                            ['percentage_decrease', t('coreshop_tier_behaviour_percentage_decrease')],
-                            ['percentage_increase', t('coreshop_tier_behaviour_percentage_increase')]
+                            ['fixed', t('coreshop_product_quantity_price_rules_behaviour_fixed')],
+                            ['amount_decrease', t('coreshop_product_quantity_price_rules_behaviour_amount_decrease')],
+                            ['amount_increase', t('coreshop_product_quantity_price_rules_behaviour_amount_increase')],
+                            ['percentage_decrease', t('coreshop_product_quantity_price_rules_behaviour_percentage_decrease')],
+                            ['percentage_increase', t('coreshop_product_quantity_price_rules_behaviour_percentage_increase')]
                         ],
                         listeners: {
                             change: function (field) {
@@ -255,17 +255,17 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
                 },
                 renderer: function (value) {
                     if (value === undefined || value === null) {
-                        return t('coreshop_tier_behaviour_nothing_selected');
+                        return t('coreshop_product_quantity_price_rules_behaviour_nothing_selected');
                     }
-                    return t('coreshop_tier_behaviour_' + value);
+                    return t('coreshop_product_quantity_price_rules_behaviour_' + value);
                 }
             },
             {
-                text: t('coreshop_tier_amount'),
+                text: t('coreshop_product_quantity_price_rules_amount'),
                 flex: 1,
                 sortable: false,
                 dataIndex: 'amount',
-                name: 'tier_amount',
+                name: 'quantity_amount',
                 getEditor: function () {
                     return new Ext.form.NumberField({
                         minValue: 0
@@ -291,7 +291,7 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
                 }
             },
             {
-                text: t('coreshop_tier_currency'),
+                text: t('coreshop_product_quantity_price_rules_currency'),
                 flex: 1,
                 sortable: false,
                 dataIndex: 'currency',
@@ -326,11 +326,11 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
                 }
             },
             {
-                text: t('coreshop_tier_percentage'),
+                text: t('coreshop_product_quantity_price_rules_percentage'),
                 flex: 1,
                 sortable: false,
                 dataIndex: 'percentage',
-                name: 'tier_percentage',
+                name: 'quantity_percentage',
                 getEditor: function () {
                     return new Ext.form.NumberField({
                         minValue: 0,
@@ -356,7 +356,7 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
                 }
             },
             {
-                text: t('coreshop_tier_pseudo_price'),
+                text: t('coreshop_product_quantity_price_rules_pseudo_price'),
                 flex: 1,
                 sortable: false,
                 dataIndex: 'pseudoPrice',
@@ -381,11 +381,11 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
                 }
             },
             {
-                text: t('coreshop_tier_highlight'),
+                text: t('coreshop_product_quantity_price_rules_highlight'),
                 flex: 1,
                 sortable: false,
                 dataIndex: 'highlighted',
-                name: 'tier_highlight',
+                name: 'quantity_highlight',
                 getEditor: function () {
                     return new Ext.form.Checkbox({});
                 },
@@ -418,10 +418,10 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
                 beforeedit: function (editor, context) {
                     var record = context.record;
 
-                    if (_.isInArray(context.column.name, ['tier_amount', 'currency', 'pseudo_price'])
+                    if (_.isInArray(context.column.name, ['quantity_amount', 'currency', 'pseudo_price'])
                         && _.isInArray(record.get('pricingBehaviour'), _.percentBasedBehaviour)) {
                         return false;
-                    } else if (context.column.name === 'tier_percentage'
+                    } else if (context.column.name === 'quantity_percentage'
                         && _.isInArray(record.get('pricingBehaviour'), _.amountBasedBehaviour)) {
                         return false;
                     }
@@ -444,7 +444,7 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
             items: [
                 {
                     xtype: 'grid',
-                    name: 'tier-price-grid',
+                    name: 'price-rule-ranges-grid',
                     frame: false,
                     autoScroll: true,
                     store: new Ext.data.Store({
@@ -471,13 +471,13 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
                             iconCls: 'pimcore_icon_add'
                         },
                         {
-                            text: t('coreshop_tier_pricing_copy_ranges'),
+                            text: t('coreshop_product_quantity_price_rules_copy_ranges'),
                             handler: this.onCopy.bind(this),
                             iconCls: 'pimcore_icon_copy',
                             name: 'clipboard-copy-btn'
                         },
                         {
-                            text: t('coreshop_tier_pricing_paste_ranges'),
+                            text: t('coreshop_product_quantity_price_rules_paste_ranges'),
                             handler: this.onPaste.bind(this),
                             iconCls: 'pimcore_icon_paste',
                             name: 'clipboard-paste-btn'
@@ -497,16 +497,16 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
 
     checkClipboard: function () {
 
-        var grid = this.rangesContainer.query('[name=tier-price-grid]')[0],
+        var grid = this.rangesContainer.query('[name=price-rule-ranges-grid]')[0],
             copyBtn = this.rangesContainer.query('toolbar button[name=clipboard-copy-btn]')[0],
             pasteBtn = this.rangesContainer.query('toolbar button[name=clipboard-paste-btn]')[0],
             pasteBtnVisible = false, pasteBtnTooltipText, cbData;
 
         copyBtn.setVisible(grid.getStore().getRange().length > 0);
 
-        if (this.clipboardManager.hasData('tierPriceRange')) {
-            cbData = this.clipboardManager.getData('tierPriceRange');
-            pasteBtnTooltipText = cbData.records.length + ' ' + t('coreshop_tier_pricing_paste_entry_amounts');
+        if (this.clipboardManager.hasData('quantityPriceRange')) {
+            cbData = this.clipboardManager.getData('quantityPriceRange');
+            pasteBtnTooltipText = cbData.records.length + ' ' + t('coreshop_product_quantity_price_rules_paste_entry_amounts');
             if (cbData.id !== this.internalTmpId) {
                 pasteBtnVisible = true;
             }
@@ -521,14 +521,14 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
     onCopy: function (btn) {
 
         this.rangesContainer.setLoading(true);
-        var grid = this.rangesContainer.query('[name=tier-price-grid]')[0];
+        var grid = this.rangesContainer.query('[name=price-rule-ranges-grid]')[0];
 
         if (grid.getStore().getRange().length === 0) {
-            this.clipboardManager.removeData('tierPriceRange');
+            this.clipboardManager.removeData('quantityPriceRange');
             return;
         }
 
-        this.clipboardManager.addData('tierPriceRange', {id: this.internalTmpId, records: grid.getStore().getData().items});
+        this.clipboardManager.addData('quantityPriceRange', {id: this.internalTmpId, records: grid.getStore().getData().items});
         this.checkClipboard();
 
         setTimeout(function () {
@@ -539,14 +539,14 @@ coreshop.tier_pricing.specific_tier_price.ranges = Class.create({
 
     onPaste: function (btn) {
 
-        var grid = this.rangesContainer.query('[name=tier-price-grid]')[0],
+        var grid = this.rangesContainer.query('[name=price-rule-ranges-grid]')[0],
             cbData;
 
-        if (!this.clipboardManager.hasData('tierPriceRange')) {
+        if (!this.clipboardManager.hasData('quantityPriceRange')) {
             return;
         }
 
-        cbData = this.clipboardManager.getData('tierPriceRange');
+        cbData = this.clipboardManager.getData('quantityPriceRange');
         Ext.Array.each(cbData.records, function (record) {
             var copy = record.copy(null);
             copy.set('rangeId', null);

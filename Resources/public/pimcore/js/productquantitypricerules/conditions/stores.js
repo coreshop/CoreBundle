@@ -1,5 +1,4 @@
-<?php
-/**
+/*
  * CoreShop.
  *
  * This source file is subject to the GNU General Public License version 3 (GPLv3)
@@ -8,13 +7,8 @@
  *
  * @copyright  Copyright (c) 2015-2019 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
+ *
  */
 
-namespace CoreShop\Bundle\CoreBundle\Validation\Constraints;
-
-use Symfony\Component\Validator\Constraint;
-
-class TierPriceRangeCurrencyAware extends Constraint
-{
-    public $message = '{{ range }} needs a valid currency to work.';
-}
+pimcore.registerNS('coreshop.product_quantity_price_rules.conditions.stores');
+coreshop.product_quantity_price_rules.conditions.stores = Class.create(coreshop.product.pricerule.conditions.stores, {});

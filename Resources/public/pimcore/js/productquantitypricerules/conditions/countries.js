@@ -10,5 +10,5 @@
  *
  */
 
-pimcore.registerNS('coreshop.tier_pricing.specific_tier_price.conditions.countries');
-coreshop.tier_pricing.specific_tier_price.conditions.countries = Class.create(coreshop.product.pricerule.conditions.countries, {});
+pimcore.registerNS('coreshop.product_quantity_price_rules.conditions.countries');
+coreshop.product_quantity_price_rules.conditions.countries = Class.create(coreshop.product.pricerule.conditions.countries, {});

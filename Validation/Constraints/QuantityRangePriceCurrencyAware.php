@@ -1,4 +1,5 @@
-/*
+<?php
+/**
  * CoreShop.
  *
  * This source file is subject to the GNU General Public License version 3 (GPLv3)
@@ -7,8 +8,13 @@
  *
  * @copyright  Copyright (c) 2015-2019 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
- *
  */
 
-pimcore.registerNS('coreshop.tier_pricing.specific_tier_price.conditions.timespan');
-coreshop.tier_pricing.specific_tier_price.conditions.timespan = Class.create(coreshop.product.pricerule.conditions.timespan, {});
+namespace CoreShop\Bundle\CoreBundle\Validation\Constraints;
+
+use Symfony\Component\Validator\Constraint;
+
+class QuantityRangePriceCurrencyAware extends Constraint
+{
+    public $message = '{{ range }} needs a valid currency to work.';
+}

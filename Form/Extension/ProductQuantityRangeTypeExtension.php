@@ -14,12 +14,12 @@ namespace CoreShop\Bundle\CoreBundle\Form\Extension;
 
 use CoreShop\Bundle\CurrencyBundle\Form\Type\CurrencyChoiceType;
 use CoreShop\Bundle\MoneyBundle\Form\Type\MoneyType;
-use CoreShop\Bundle\TierPricingBundle\Form\Type\ProductSpecificTierPriceRangeType;
+use CoreShop\Bundle\ProductQuantityPriceRulesBundle\Form\Type\ProductQuantityRangeType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-final class ProductSpecificTierPriceRangeTypeExtension extends AbstractTypeExtension
+final class ProductQuantityRangeTypeExtension extends AbstractTypeExtension
 {
     /**
      * {@inheritdoc}
@@ -38,6 +38,6 @@ final class ProductSpecificTierPriceRangeTypeExtension extends AbstractTypeExten
      */
     public function getExtendedType()
     {
-        return ProductSpecificTierPriceRangeType::class;
+        return ProductQuantityRangeType::class;
     }
 }

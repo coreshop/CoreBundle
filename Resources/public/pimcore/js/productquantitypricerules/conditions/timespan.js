@@ -10,5 +10,5 @@
  *
  */
 
-pimcore.registerNS('coreshop.tier_pricing.specific_tier_price.conditions.currencies');
-coreshop.tier_pricing.specific_tier_price.conditions.currencies = Class.create(coreshop.product.pricerule.conditions.currencies, {});
+pimcore.registerNS('coreshop.product_quantity_price_rules.conditions.timespan');
+coreshop.product_quantity_price_rules.conditions.timespan = Class.create(coreshop.product.pricerule.conditions.timespan, {});

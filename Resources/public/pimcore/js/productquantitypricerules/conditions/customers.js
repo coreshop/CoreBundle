@@ -10,5 +10,5 @@
  *
  */
 
-pimcore.registerNS('coreshop.tier_pricing.specific_tier_price.conditions.zones');
-coreshop.tier_pricing.specific_tier_price.conditions.zones = Class.create(coreshop.product.pricerule.conditions.zones, {});
+pimcore.registerNS('coreshop.product_quantity_price_rules.conditions.customers');
+coreshop.product_quantity_price_rules.conditions.customers = Class.create(coreshop.product.pricerule.conditions.customers, {});
