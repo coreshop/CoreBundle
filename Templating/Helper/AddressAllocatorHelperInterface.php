@@ -12,16 +12,23 @@
 
 namespace CoreShop\Bundle\CoreBundle\Templating\Helper;
 
-use CoreShop\Component\Store\Model\StoreInterface;
-use Symfony\Component\Templating\Helper\HelperInterface;
+use CoreShop\Component\Address\Model\AddressInterface;
+use CoreShop\Component\Customer\Model\CustomerInterface;
 
-interface ConfigurationHelperInterface extends HelperInterface
+interface AddressAllocatorHelperInterface
 {
     /**
-     * @param string         $name
-     * @param StoreInterface $store
+     * @param CustomerInterface $address
      *
-     * @return mixed
+     * @return AddressInterface[]
      */
-    public function getConfiguration($name, StoreInterface $store = null);
+    public function allocateAddresses(CustomerInterface $address);
+
+    /**
+     * @param CustomerInterface $customer
+     * @param AddressInterface  $address
+     *
+     * @return bool
+     */
+    public function isOwnerOfAddress(CustomerInterface $customer, AddressInterface $address);
 }
