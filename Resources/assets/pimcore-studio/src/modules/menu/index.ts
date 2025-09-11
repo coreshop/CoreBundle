@@ -10,15 +10,16 @@
  * @license    CoreShop Commercial License (CCL)
  */
 
-import {type AbstractModule, container} from '@pimcore/studio-ui-bundle'
-import {OrderByNumberButton} from "../components/OrderByNumberButton";
+import {container, AbstractModule} from '@pimcore/studio-ui-bundle'
+import {OrderByNumberButton} from "../../components/OrderByNumberButton";
 
-import MenuButtonRegistry from '@coreshop/menu-studio-plugin';
+// @ts-ignore
+import MenuButtonRegistry from '@coreshop/menu';
 
-export {orderService} from '../services/OrderService'
-export {OrderByNumberButton} from '../components/OrderByNumberButton'
+export {orderService} from '../../services/OrderService'
+export {OrderByNumberButton} from '../../components/OrderByNumberButton'
 
-export const CoreBundle: AbstractModule = {
+export const CoreBundleMenuModule: AbstractModule = {
     onInit(): void {
         const buttonRegistry = container.get<MenuButtonRegistry>('CoreShopMenuButtons')
 

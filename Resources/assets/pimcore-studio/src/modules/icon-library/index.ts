@@ -15,71 +15,71 @@ import { serviceIds } from '@pimcore/studio-ui-bundle/app'
 import { type IconLibrary } from '@pimcore/studio-ui-bundle/modules/icon-library'
 
 // @ts-ignore
-import cartIcon from '../assets/cart.svg?react'
+import cartIcon from '../../assets/cart.svg?react'
 // @ts-ignore
-import cartAbandonedIcon from '../assets/cart-abandoned.svg?react'
+import cartAbandonedIcon from '../../assets/cart-abandoned.svg?react'
 // @ts-ignore
-import categoryIcon from '../assets/category.svg?react'
+import categoryIcon from '../../assets/category.svg?react'
 // @ts-ignore
-import chartsIcon from '../assets/charts.svg?react'
+import chartsIcon from '../../assets/charts.svg?react'
 // @ts-ignore
-import collaborationIcon from '../assets/collaboration.svg?react'
+import collaborationIcon from '../../assets/collaboration.svg?react'
 // @ts-ignore
-import commentIcon from '../assets/comment.svg?react'
+import commentIcon from '../../assets/comment.svg?react'
 // @ts-ignore
-import countriesIcon from '../assets/countries.svg?react'
+import countriesIcon from '../../assets/countries.svg?react'
 // @ts-ignore
-import currenciesIcon from '../assets/currencies.svg?react'
+import currenciesIcon from '../../assets/currencies.svg?react'
 // @ts-ignore
-import customerIcon from '../assets/customer.svg?react'
+import customerIcon from '../../assets/customer.svg?react'
 // @ts-ignore
-import customerGroupIcon from '../assets/customer-group.svg?react'
+import customerGroupIcon from '../../assets/customer-group.svg?react'
 // @ts-ignore
-import freeShippingIcon from '../assets/free-shipping.svg?react'
+import freeShippingIcon from '../../assets/free-shipping.svg?react'
 // @ts-ignore
-import giftIcon from '../assets/gift.svg?react'
+import giftIcon from '../../assets/gift.svg?react'
 // @ts-ignore
-import guestIcon from '../assets/guest.svg?react'
+import guestIcon from '../../assets/guest.svg?react'
 // @ts-ignore
-import invoiceIcon from '../assets/invoice.svg?react'
+import invoiceIcon from '../../assets/invoice.svg?react'
 // @ts-ignore
-import logoFillIcon from '../assets/logo-fill.svg?react'
+import logoFillIcon from '../../assets/logo-fill.svg?react'
 // @ts-ignore
-import mailIcon from '../assets/mail.svg?react'
+import mailIcon from '../../assets/mail.svg?react'
 // @ts-ignore
-import manufacturerIcon from '../assets/manufacturer.svg?react'
+import manufacturerIcon from '../../assets/manufacturer.svg?react'
 // @ts-ignore
-import moneyIcon from '../assets/money.svg?react'
+import moneyIcon from '../../assets/money.svg?react'
 // @ts-ignore
-import monitorIcon from '../assets/monitor.svg?react'
+import monitorIcon from '../../assets/monitor.svg?react'
 // @ts-ignore
-import notCombinableIcon from '../assets/not_combinable.svg?react'
+import notCombinableIcon from '../../assets/not_combinable.svg?react'
 // @ts-ignore
-import ordersIcon from '../assets/orders.svg?react'
+import ordersIcon from '../../assets/orders.svg?react'
 // @ts-ignore
-import ordersBackendIcon from '../assets/orders-backend.svg?react'
+import ordersBackendIcon from '../../assets/orders-backend.svg?react'
 // @ts-ignore
-import paymentsIcon from '../assets/payments.svg?react'
+import paymentsIcon from '../../assets/payments.svg?react'
 // @ts-ignore
-import productIcon from '../assets/product.svg?react'
+import productIcon from '../../assets/product.svg?react'
 // @ts-ignore
-import quotesIcon from '../assets/quotes.svg?react'
+import quotesIcon from '../../assets/quotes.svg?react'
 // @ts-ignore
-import salesIcon from '../assets/sales.svg?react'
+import salesIcon from '../../assets/sales.svg?react'
 // @ts-ignore
-import shipmentIcon from '../assets/shipment.svg?react'
+import shipmentIcon from '../../assets/shipment.svg?react'
 // @ts-ignore
-import stockIcon from '../assets/stock.svg?react'
+import stockIcon from '../../assets/stock.svg?react'
 // @ts-ignore
-import storeMailIcon from '../assets/store-mail.svg?react'
+import storeMailIcon from '../../assets/store-mail.svg?react'
 // @ts-ignore
-import storeValuesIcon from '../assets/store-values.svg?react'
+import storeValuesIcon from '../../assets/store-values.svg?react'
 // @ts-ignore
-import voucherIcon from '../assets/voucher.svg?react'
+import voucherIcon from '../../assets/voucher.svg?react'
 // @ts-ignore
-import customerToCompanyAssignToExisting from '../assets/customer_to_company_assign_to_existing.svg?react'
+import customerToCompanyAssignToExisting from '../../assets/customer_to_company_assign_to_existing.svg?react'
 // @ts-ignore
-import customerToCompanyAssignToNew from '../assets/customer_to_company_assign_to_new.svg?react'
+import customerToCompanyAssignToNew from '../../assets/customer_to_company_assign_to_new.svg?react'
 
 export const CoreBundleIconModule: AbstractModule = {
   onInit(): void {
