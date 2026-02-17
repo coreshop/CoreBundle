@@ -17,17 +17,18 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\CoreBundle\Form\Extension;
 
-use CoreShop\Bundle\OrderBundle\Form\Type\OrderShipmentCreationType;
+use CoreShop\Bundle\OrderBundle\Form\Type\Studio\OrderShipmentCreationType;
 use CoreShop\Bundle\ShippingBundle\Form\Type\CarrierChoiceType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
-final class OrderShipmentCreationTypeExtension extends AbstractTypeExtension
+final class StudioOrderShipmentCreationTypeExtension extends AbstractTypeExtension
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('carrier', CarrierChoiceType::class, [
-            'priority' => 400
+            'label' => 'coreshop_carrier',
+            'priority' => 400,
         ]);
     }
 

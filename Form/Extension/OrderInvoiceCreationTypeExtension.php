@@ -17,22 +17,23 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\CoreBundle\Form\Extension;
 
-use CoreShop\Bundle\OrderBundle\Form\Type\OrderShipmentCreationType;
-use CoreShop\Bundle\ShippingBundle\Form\Type\CarrierChoiceType;
+use CoreShop\Bundle\OrderBundle\Form\Type\Studio\OrderInvoiceCreationType;
+use CoreShop\Bundle\PaymentBundle\Form\Type\PaymentProviderChoiceType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
-final class OrderShipmentCreationTypeExtension extends AbstractTypeExtension
+final class OrderInvoiceCreationTypeExtension extends AbstractTypeExtension
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('carrier', CarrierChoiceType::class, [
-            'priority' => 400
+        $builder->add('paymentProvider', PaymentProviderChoiceType::class, [
+            'label' => 'coreshop_paymentProvider',
+            'priority' => 400,
         ]);
     }
 
     public static function getExtendedTypes(): iterable
     {
-        return [OrderShipmentCreationType::class];
+        return [OrderInvoiceCreationType::class];
     }
 }
