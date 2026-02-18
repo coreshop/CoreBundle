@@ -15,7 +15,7 @@ declare(strict_types=1);
  *
  */
 
-namespace CoreShop\Bundle\CoreBundle\Pimcore\GridColumnConfig\Operator;
+namespace CoreShop\Bundle\CoreBundle\AdminClass\Pimcore\GridColumnConfig\Operator;
 
 use CoreShop\Component\Core\Model\ProductInterface;
 use CoreShop\Component\Core\Model\StoreInterface;

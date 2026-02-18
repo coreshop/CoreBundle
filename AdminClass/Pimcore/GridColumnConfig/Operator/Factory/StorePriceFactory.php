@@ -15,9 +15,9 @@ declare(strict_types=1);
  *
  */
 
-namespace CoreShop\Bundle\CoreBundle\Pimcore\GridColumnConfig\Operator\Factory;
+namespace CoreShop\Bundle\CoreBundle\AdminClass\Pimcore\GridColumnConfig\Operator\Factory;
 
-use CoreShop\Bundle\CoreBundle\Pimcore\GridColumnConfig\Operator\StorePrice;
+use CoreShop\Bundle\CoreBundle\AdminClass\Pimcore\GridColumnConfig\Operator\StorePrice;
 use CoreShop\Component\Currency\Formatter\MoneyFormatterInterface;
 use CoreShop\Component\Store\Repository\StoreRepositoryInterface;
 use Pimcore\Bundle\AdminBundle\DataObject\GridColumnConfig\Operator\Factory\OperatorFactoryInterface;

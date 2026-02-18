@@ -15,7 +15,7 @@ declare(strict_types=1);
  *
  */
 
-namespace CoreShop\Bundle\CoreBundle\EventListener;
+namespace CoreShop\Bundle\CoreBundle\AdminClass\EventListener;
 
 use CoreShop\Component\Core\Model\ProductInterface;
 use Pimcore\Bundle\AdminBundle\Event\AdminEvents;
