@@ -15,11 +15,10 @@ declare(strict_types=1);
  *
  */
 
-namespace CoreShop\Bundle\CoreBundle\AdminClass\EventListener;
+namespace CoreShop\Bundle\CoreBundle\EventListener;
 
 use CoreShop\Component\Core\Model\CustomerInterface;
 use CoreShop\Component\Order\Repository\OrderRepositoryInterface;
-use Pimcore\Bundle\AdminBundle\Event\Model\DataObjectDeleteInfoEvent;
 use Pimcore\Event\Model\DataObjectEvent;
 
 final class CustomerOrderDeletionListener
@@ -27,22 +26,6 @@ final class CustomerOrderDeletionListener
     public function __construct(
         private OrderRepositoryInterface $orderRepository,
     ) {
-    }
-
-    public function checkCustomerDeletionAllowed(DataObjectDeleteInfoEvent $event): void
-    {
-        $object = $event->getObject();
-
-        if (!$object instanceof CustomerInterface) {
-            return;
-        }
-
-        $hasOrders = $this->orderRepository->hasCustomerOrders($object);
-
-        if ($hasOrders) {
-            $event->setDeletionAllowed(false);
-            $event->setReason('Cannot delete a customer with orders');
-        }
     }
 
     public function checkCustomerOrdersBeforeDeletion(DataObjectEvent $event): void
@@ -53,9 +36,7 @@ final class CustomerOrderDeletionListener
             return;
         }
 
-        $hasOrders = $this->orderRepository->hasCustomerOrders($object);
-
-        if ($hasOrders) {
+        if ($this->orderRepository->hasCustomerOrders($object)) {
             throw new \InvalidArgumentException('Cannot delete a customer with orders');
         }
     }
