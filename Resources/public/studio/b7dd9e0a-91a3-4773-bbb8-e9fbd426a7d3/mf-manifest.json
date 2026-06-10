@@ -20,8 +20,8 @@
       "api": ""
     },
     "globalName": "coreshopcore",
-    "pluginVersion": "2.4.0",
-    "publicPath": "/bundles/coreshopcore/studio/fcc7633e-6d79-495d-ac7b-274d39531f92/"
+    "pluginVersion": "2.5.1",
+    "publicPath": "/bundles/coreshopcore/studio/b7dd9e0a-91a3-4773-bbb8-e9fbd426a7d3/"
   },
   "shared": [
     {
@@ -239,7 +239,7 @@
             "static/js/839.ebd116da.js",
             "static/js/512.32afe7b5.js",
             "static/js/14.521746b4.js",
-            "static/js/async/155.3e109e18.js",
+            "static/js/async/155.449f7510.js",
             "static/js/544.f3afa0d2.js",
             "static/js/712.0899b96c.js",
             "static/js/636.27f0e038.js",
