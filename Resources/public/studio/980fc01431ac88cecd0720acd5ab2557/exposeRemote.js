@@ -7,7 +7,7 @@
         window.alternativePluginExportPaths = {}
       }
 
-      window.pluginRemotes.coreshopcore = "/bundles/coreshopcore/studio/1f4b18148da592b3f15965c941bc5f48/static/js/remoteEntry.js"
+      window.pluginRemotes.coreshopcore = "/bundles/coreshopcore/studio/980fc01431ac88cecd0720acd5ab2557/static/js/remoteEntry.js"
 
       
     
